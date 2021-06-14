@@ -19,9 +19,9 @@ const buscarNombresArchivosAnimal = async (animal) =>{
     return nombresArchivosAnimal
 }
 
-const agregarAnimal = async (animal) =>{
-    
-}
+// const agregarAnimal = async (animal) =>{
+
+// }
 // (async () =>{
 //     let r = await buscarNombresArchivosAnimal("Serpiente")
 //     console.log(r)

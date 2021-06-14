@@ -18,3 +18,4 @@ inputAnimal.addEventListener("change", async ()=>{
     console.log(nombreArchivoImgAnimalSeleccionado)
     espacioPreview.setAttribute("style",`background-image: url(assets/imgs/${nombreArchivoImgAnimalSeleccionado})`)
 })
+
