@@ -1,6 +1,7 @@
 //consulta asincrona a la api
 const obtenerDatosAnimales = async () =>{
-    let response = await fetch("/animales-salvajes/animales.json")
+    let response = await fetch("/animales-salvajes/animales.json") //comente esta linea para revisión en local
+    // let response = await fetch("../../animales.json")   //use esta ruta para revisión en local
     let data = await response.json()
     let {animales} = data
     // console.log(animales)
