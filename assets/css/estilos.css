@@ -25,7 +25,7 @@ body {
   height: 200px;
 } */
 
-/* Tabla de Participantes */
+/* Tabla de Ejemplares */
 
 #Animales {
   height: 100%;
@@ -40,9 +40,18 @@ body {
   box-shadow: 0px 1px 5px 1px;
 }
 
-.participante {
-  max-width: 30%;
+.ejemplar {
+  max-width: 20%;
+  height: auto;
 }
+.ejemplar div{
+  height: 2rem;
+  background-image: url(../imgs/audio.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 
 /* Modal */
 

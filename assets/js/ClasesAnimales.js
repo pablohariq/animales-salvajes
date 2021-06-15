@@ -2,7 +2,6 @@ class Animal{
     constructor(nombre,edad,img,comentarios,sonido){
         let _nombre = nombre
         this._getNombre = () => _nombre
-        this._setNombre = (nuevoNombre) => _nombre = nuevoNombre
 
         let _edad = edad
         this._getEdad = () => _edad
@@ -21,16 +20,19 @@ class Animal{
         return this._getNombre()
     }
     get Edad(){
-        return this._getEdad
+        return this._getEdad()
     }
     get Img(){
-        return this._getImg
+        return this._getImg()
+    }
+    get Comentarios(){
+
     }
     set Comentarios(nuevoComent){
         return this._setComentarios(nuevoComent)
     }
     get Sonido(){
-        return this._getSonido
+        return this._getSonido()
     }
 }
 
@@ -78,3 +80,5 @@ class Aguila extends Animal{
         
     }
 }
+
+export {Animal, Leon, Lobo, Oso, Serpiente, Aguila}
