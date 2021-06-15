@@ -26,21 +26,35 @@ const obtenerSonidoAnimal = async (tipoanimal) =>{
     return(sonido)
 }
 
-const dibujarAnimal = (animal, lienzo) => {
-    let imgUrl = animal.Img
-    console.log(imgUrl)
-    let tarjetaAnimal = `
-    <div class="card ejemplar">
-    <img class="card-img-top" src="./assets/imgs/${imgUrl}">
-
-    <div class="card-footer bg-secondary"></div>
-    </div>`
-    lienzo.innerHTML += tarjetaAnimal
+const dibujarAnimales = (animales) => {
+    const divAnimales = document.querySelector("#Animales")
+    divAnimales.innerHTML = ""
+    animales.forEach((animal,i) =>{
+        let imgUrl = animal.Img
+        console.log(imgUrl)
+        let tarjetaAnimal = `
+        <div class="card ejemplar m-2">
+        <img id="animal-${i}" class="card-img-top" src="./assets/imgs/${imgUrl}">
+        <div class="card-footer bg-secondary" ></div>
+        </div>`
+        divAnimales.innerHTML += tarjetaAnimal
+        
+    })
 }
-// (async () =>{
-//     let r = await buscarNombresArchivosAnimal("Serpiente")
-//     console.log(r)
-// })()
+
+const activarModal = function(animal){
+    let $ventanaModal = $("#exampleModal")
+    let $cuerpoModal = $(".modal-body")[0]
+    $cuerpoModal.innerHTML = 
+    `
+    <img src="./assets/imgs/${animal.Img}"></div>
+    <p><b>${animal.Edad}</p>
+    <br>
+    <p>Comentarios</p></b>
+    <p>${animal.Comentarios}</p>
+    `
+    $ventanaModal.modal('toggle')
+}
 
 
-export {obtenerDatosAnimales, buscarNombresArchivosAnimal, obtenerSonidoAnimal, dibujarAnimal}
+export {obtenerDatosAnimales, buscarNombresArchivosAnimal, obtenerSonidoAnimal, dibujarAnimales, activarModal}

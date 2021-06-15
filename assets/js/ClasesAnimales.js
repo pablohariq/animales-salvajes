@@ -26,7 +26,7 @@ class Animal{
         return this._getImg()
     }
     get Comentarios(){
-
+        return this._getComentarios()
     }
     set Comentarios(nuevoComent){
         return this._setComentarios(nuevoComent)
@@ -41,7 +41,7 @@ class Leon extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Rugir(){
-
+        document.getElementById(`"${this.Sonido}"`).play
     }
 }
 

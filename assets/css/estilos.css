@@ -30,6 +30,7 @@ body {
 #Animales {
   height: 100%;
   background: #f0f0f0;
+  overflow-y: auto;
 }
 
 #Animales div div {
@@ -42,7 +43,7 @@ body {
 
 .ejemplar {
   max-width: 20%;
-  height: auto;
+  height: 40%;
 }
 .ejemplar div{
   height: 2rem;
@@ -52,10 +53,19 @@ body {
   background-position: center center;
 }
 
+.card-img-top{
+  height: calc(100% - 2rem);
+  object-fit: cover;
+}
 
 /* Modal */
 
 .modal-dialog{
     max-width: 85% !important;
+    text-align: center;
+    color: #f0f0f0;
 }
 
+.modal-body img{
+  width: 80%;
+}
