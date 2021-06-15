@@ -14,7 +14,7 @@ class Animal{
         this._setComentarios = (nuevosComentarios) => _comentarios = nuevosComentarios
 
         let _sonido = sonido
-        this._getSonido = () => sonido
+        this._getSonido = () => _sonido
     }
     get Nombre(){
         return this._getNombre()
@@ -41,7 +41,9 @@ class Leon extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Rugir(){
-        document.getElementById(`"${this.Sonido}"`).play
+        document.querySelector("#player").setAttribute("src",`./assets/sounds/${this.Sonido}.mp3`) //setAttribute devuelve undefined
+        let player = document.querySelector("#player")
+        player.play()
     }
 }
 
@@ -50,7 +52,9 @@ class Lobo extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Aullar(){
-
+        document.querySelector("#player").setAttribute("src",`./assets/sounds/${this.Sonido}.mp3`) //setAttribute devuelve undefined
+        let player = document.querySelector("#player")
+        player.play()    
     }
 }
 
@@ -59,8 +63,9 @@ class Oso extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Gruñir(){
-        
-    }
+        document.querySelector("#player").setAttribute("src",`./assets/sounds/${this.Sonido}.mp3`) //setAttribute devuelve undefined
+        let player = document.querySelector("#player")
+        player.play()        }
 }
 
 class Serpiente extends Animal{
@@ -68,8 +73,9 @@ class Serpiente extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Sisear(){
-        
-    }
+        document.querySelector("#player").setAttribute("src",`./assets/sounds/${this.Sonido}.mp3`) //setAttribute devuelve undefined
+        let player = document.querySelector("#player")
+        player.play()        }
 }
 
 class Aguila extends Animal{
@@ -77,7 +83,9 @@ class Aguila extends Animal{
         super(nombre, edad, img, comentarios, sonido)
     }
     Chillar(){
-        
+        document.querySelector("#player").setAttribute("src",`./assets/sounds/${this.Sonido}.mp3`) //setAttribute devuelve undefined
+        let player = document.querySelector("#player")
+        player.play()    
     }
 }
 

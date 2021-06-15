@@ -10,7 +10,7 @@ const btnRegistrar = document.querySelector("#btnRegistrar")
 inputAnimal.addEventListener("change", async ()=>{
     let animalSeleccionado = inputAnimal.value
     console.log(animalSeleccionado)
-    let nombreArchivoImgAnimalSeleccionado = (await buscarNombresArchivosAnimal(animalSeleccionado)).nombreArchivoImagen //el parentesis en await es importante antes de extraer la propiedad nombreArchivoImagen
+    let nombreArchivoImgAnimalSeleccionado = (await buscarNombresArchivosAnimal(animalSeleccionado)).nombreArchivoImagen 
     console.log(nombreArchivoImgAnimalSeleccionado)
     espacioPreview.setAttribute("style",`background-image: url(assets/imgs/${nombreArchivoImgAnimalSeleccionado})`)
 })
@@ -23,13 +23,17 @@ btnRegistrar.addEventListener("click", async(e) =>{
         e.preventDefault();
         let animalSeleccionado = inputAnimal.value
         let edadAnimal =  inputEdad.value
+        if((animalSeleccionado =="Seleccione un animal") || (edadAnimal=="Seleccione un rango de años")){
+            throw("Ingrese todos los datos")
+        }
         let imagen = (await buscarNombresArchivosAnimal(animalSeleccionado)).nombreArchivoImagen
         let comentarios = inputComentarios.value
         let sonido = await obtenerSonidoAnimal(animalSeleccionado);
-        (()=> {
-            if (!(!!(animalSeleccionado) & !!(edadAnimal) & !!(comentarios))){
+        (()=> { //aquí está su IIFE
+            if (!(!!comentarios)){
                 throw("Ingrese todos los datos")
             }
+
         })();
         const nuevoAnimal = eval(`new ${animalSeleccionado}(animalSeleccionado,edadAnimal,imagen,comentarios,sonido)`)
         arregloAnimales.push(nuevoAnimal) //agrega el registro creado a un arreglo
@@ -37,16 +41,40 @@ btnRegistrar.addEventListener("click", async(e) =>{
         //dibujar animales
         dibujarAnimales(arregloAnimales)
         console.log(arregloAnimales)    
-        //DESPUES de dibujar los animales agregamos los eventos a todos sus <img>
+        //DESPUES de dibujar los animales agregamos los eventos de activar modal a todos sus <img>
         arregloAnimales.forEach((animal,i)=>{
             let imgAnimal = document.querySelector(`#animal-${i}`)
                 imgAnimal.addEventListener("click", ()=>{activarModal(animal)})
         })
-    
+
+        //agregamos los eventos de reproducir sonido
+        arregloAnimales.forEach((animal,i)=>{
+            let audioAnimal = document.querySelector(`#audioAnimal-${i}`)
+            audioAnimal.addEventListener("click", ()=>{
+                if (animal.Nombre == "Leon"){
+                    animal.Rugir()
+                }
+                else if(animal.Nombre == "Lobo"){
+                    animal.Aullar()
+                }
+                else if(animal.Nombre == "Oso"){
+                    animal.Gruñir()
+                }
+                else if(animal.Nombre == "Serpiente"){
+                    animal.Sisear()
+                }
+                else if(animal.Nombre == "Aguila"){
+                    animal.Chillar()
+                }
+            })
+        })
+
+
         //resetear formulario, al no haber una etiqueta form es más dificil
         Array.from(document.getElementsByClassName("form-control")).forEach(e => e.value = "")
         espacioPreview.setAttribute("style","") //en rigor lo deja en blanco en lugar de resetearlo
-        
+        inputAnimal.value = "Seleccione un animal"
+        inputEdad.value = "Seleccione un rango de años"
     } catch (error) {
         alert(error)
     }

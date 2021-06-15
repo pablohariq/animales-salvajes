@@ -35,7 +35,7 @@ const dibujarAnimales = (animales) => {
         let tarjetaAnimal = `
         <div class="card ejemplar m-2">
         <img id="animal-${i}" class="card-img-top" src="./assets/imgs/${imgUrl}">
-        <div class="card-footer bg-secondary" ></div>
+        <div id="audioAnimal-${i}" class="card-footer bg-secondary" ></div>
         </div>`
         divAnimales.innerHTML += tarjetaAnimal
         
